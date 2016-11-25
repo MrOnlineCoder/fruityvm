@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1480098044 source:e:\development\c++\projects\fruity vm\main.c
+	<stdio.h>
+	<conio.h>
+	"vm_instructions.h"
+	"vm.h"
+
+1480098025 e:\development\c++\projects\fruity vm\vm_instructions.h
+
+1480082680 e:\development\c++\projects\fruity vm\vm.h
+
+1480097968 source:e:\development\c++\projects\fruity vm\vm.c
+	"vm.h"
+	"vm_instructions.h"
+	<stdio.h>
+
