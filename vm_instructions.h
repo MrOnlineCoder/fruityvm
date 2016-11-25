@@ -12,5 +12,6 @@
 #define JMP 8
 #define PUTCHAR 9
 #define JMPEQ 10
+#define PUTSTR 11
 
 #endif

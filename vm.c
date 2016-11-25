@@ -91,6 +91,16 @@ void vm_jump() {
 	ip = addr;
 }
 
+void vm_putstr() {
+    ip++;
+    int charcode = code[ip];
+    while (charcode != 0 && ip < codeLength) {
+        printf("%c", charcode);
+        ip++;
+        charcode = code[ip];
+    }
+}
+
 void vm_jumpeq() {
 	ip++;
 	int val = code[ip];
@@ -165,6 +175,9 @@ void vm_main() {
 			   break;
              case JMPEQ:
                 vm_jumpeq();
+                break;
+             case PUTSTR:
+                vm_putstr();
                 break;
              default:
                 printf("VM: unknown instruction: %i \n", ic);

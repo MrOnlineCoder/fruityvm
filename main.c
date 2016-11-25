@@ -61,8 +61,7 @@ int main() {
         ISUM,
         SPRINT,
         JMPEQ, 125, 8,
-        PUTCHAR, 79,
-        PUTCHAR, 75,
+        PUTSTR, 72, 69, 76, 76, 79, 33, 0,
         HALT
 	};
 	vm_load(hello, sizeof(hello), 32);
