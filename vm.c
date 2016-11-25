@@ -112,6 +112,13 @@ void vm_jumpeq() {
     }
 }
 
+void vm_read() {
+    int input = 0;
+    scanf("%i", &input);
+    stack_push(input);
+    printf("VM: read input: %i \n", input);
+}
+
 void vm_load(int ucode[], int size, int memSize) {
     codeLength = size / sizeof(int);
     for(size_t i=0;i<codeLength;i++) {
@@ -135,51 +142,54 @@ void vm_main() {
 	ip = 0; //Instruction pointer
     ic = code[ip]; // Instruction code
 	while (ic != HALT && ip < codeLength) {
-		switch(ic) {
-			case INT:
-			   ip++;
-			   int val = code[ip];
-			   printf("VM: adding INT(%i) to stack \n", val);
-			   stack_push(val);
-			   break;
-			 case SPRINT:
-			   printf("VM: stack= [ ");
-			   for (int i = 0; i < top+1; i++) {
-			   	 printf("%i ", stack[i]);
-			   }
-			   printf("] \n");
-			   break;
-			 case ISUM:
-			   vm_isum();
-			   break;
-			 case ISUB:
-			   vm_isub();
-			   break;
-			 case SPOP:
-			   printf("VM: stack pop \n");
-			   stack_pop();
-			   break;
-			 case IMUL:
-			   vm_imul();
-			   break;
-			 case IDIV:
-			   vm_idiv();
-			   break;
-			 case JMP:
-			   vm_jump();
-			   break;
-			 case PUTCHAR:
-			   ip++;
-			   char c = code[ip];
-			   printf("%c", c);
-			   break;
-             case JMPEQ:
+        switch(ic) {
+            case INT:
+                ip++;
+                int val = code[ip];
+                printf("VM: adding INT(%i) to stack \n", val);
+                stack_push(val);
+                break;
+            case SPRINT:
+                printf("VM: stack= [ ");
+                for (int i = 0; i < top+1; i++) {
+                    printf("%i ", stack[i]);
+                }
+                printf("] \n");
+                break;
+            case ISUM:
+                vm_isum();
+                break;
+            case ISUB:
+                vm_isub();
+                break;
+            case SPOP:
+                printf("VM: stack pop \n");
+                stack_pop();
+                break;
+            case IMUL:
+                vm_imul();
+                break;
+            case IDIV:
+                vm_idiv();
+                break;
+            case JMP:
+                vm_jump();
+                break;
+            case PUTCHAR:
+                ip++;
+                char c = code[ip];
+                printf("%c", c);
+                break;
+            case JMPEQ:
                 vm_jumpeq();
                 break;
-             case PUTSTR:
+            case PUTSTR:
                 vm_putstr();
                 break;
-             default:
+            case READ:
+                vm_read();
+                break;
+            default:
                 printf("VM: unknown instruction: %i \n", ic);
 		}
 		ip++;

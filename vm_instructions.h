@@ -13,5 +13,6 @@
 #define PUTCHAR 9
 #define JMPEQ 10
 #define PUTSTR 11
+#define READ 12
 
 #endif

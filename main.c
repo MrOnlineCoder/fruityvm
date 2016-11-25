@@ -64,7 +64,14 @@ int main() {
         PUTSTR, 72, 69, 76, 76, 79, 33, 0,
         HALT
 	};
-	vm_load(hello, sizeof(hello), 32);
+
+	int inputTest[] = {
+        PUTSTR, 73, 58, 0,
+        READ,
+        SPRINT,
+        HALT
+	};
+	vm_load(inputTest, sizeof(inputTest), 32);
 	vm_main();
     _getch();
     return 0;
